@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes - Hotel Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="brand">
+            <span class="icon">🏨</span>
+            <h1>Hotel Manager</h1>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="guests.html">Huéspedes</a>
+            <a href="rooms.html">Habitaciones</a>
+            <a href="reservations.html">Reservas</a>
+            <a href="new-reservation.html">Nueva Reserva</a>
+            <a href="reports.html" class="active">Reportes</a>
+            <button id="logoutBtn">Cerrar Sesión</button>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h2>📊 Reportes y Operaciones Batch</h2>
+                <p>Operaciones masivas y reportes del hotel (usa Promise.all)</p>
+            </div>
+        </div>
+
+        <!-- Batch Check-In -->
+        <div class="section">
+            <h3 class="section-title">✅ Batch Check-In</h3>
+            <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.875rem;">
+                Seleccione las reservas confirmadas para realizar check-in masivo usando Promise.all
+            </p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAllCheckIn"></th>
+                            <th>ID</th>
+                            <th>Huésped</th>
+                            <th>Habitación</th>
+                            <th>Check-In</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="checkInList">
+                        <tr>
+                            <td colspan="6" class="loading">Cargando...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="margin-top: 1rem;">
+                <button class="btn btn-success" id="batchCheckInBtn">🚀 Ejecutar Check-In Masivo</button>
+            </div>
+        </div>
+
+        <!-- Batch Check-Out -->
+        <div class="section">
+            <h3 class="section-title">🚪 Batch Check-Out</h3>
+            <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.875rem;">
+                Seleccione las reservas con check-in para realizar check-out masivo usando Promise.all
+            </p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAllCheckOut"></th>
+                            <th>ID</th>
+                            <th>Huésped</th>
+                            <th>Habitación</th>
+                            <th>Check-Out</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="checkOutList">
+                        <tr>
+                            <td colspan="6" class="loading">Cargando...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="margin-top: 1rem;">
+                <button class="btn btn-warning" id="batchCheckOutBtn">🚀 Ejecutar Check-Out Masivo</button>
+            </div>
+        </div>
+
+        <!-- Batch Room Maintenance -->
+        <div class="section">
+            <h3 class="section-title">🔧 Batch Mantenimiento de Habitaciones</h3>
+            <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.875rem;">
+                Seleccione habitaciones disponibles para marcar en mantenimiento masivo usando Promise.all
+            </p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAllRooms"></th>
+                            <th>ID</th>
+                            <th>Número</th>
+                            <th>Tipo</th>
+                            <th>Precio</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="roomMaintenanceList">
+                        <tr>
+                            <td colspan="6" class="loading">Cargando...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="btn-group" style="margin-top: 1rem;">
+                <button class="btn btn-danger" id="batchMaintenanceBtn">🔧 Marcar en Mantenimiento</button>
+                <button class="btn btn-success" id="batchAvailableBtn">✅ Marcar como Disponible</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/reports.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitaciones - Hotel Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="brand">
+            <span class="icon">🏨</span>
+            <h1>Hotel Manager</h1>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="guests.html">Huéspedes</a>
+            <a href="rooms.html" class="active">Habitaciones</a>
+            <a href="reservations.html">Reservas</a>
+            <a href="new-reservation.html">Nueva Reserva</a>
+            <a href="reports.html">Reportes</a>
+            <button id="logoutBtn">Cerrar Sesión</button>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h2>🚪 Habitaciones</h2>
+                <p>Gestión de habitaciones del hotel</p>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('addRoomModal')">+ Nueva Habitación</button>
+        </div>
+
+        <div class="filter-bar">
+            <select id="filterStatus">
+                <option value="">Todos los estados</option>
+                <option value="available">Disponible</option>
+                <option value="occupied">Ocupada</option>
+                <option value="maintenance">Mantenimiento</option>
+            </select>
+            <select id="filterType">
+                <option value="">Todos los tipos</option>
+                <option value="single">Individual</option>
+                <option value="double">Doble</option>
+                <option value="suite">Suite</option>
+            </select>
+        </div>
+
+        <div class="grid-container" id="roomList">
+            <div class="loading">Cargando habitaciones...</div>
+        </div>
+    </div>
+
+    <!-- Add Room Modal -->
+    <div id="addRoomModal" class="modal-overlay">
+        <div class="modal">
+            <button class="close-btn" onclick="closeModal('addRoomModal')">&times;</button>
+            <h2>Nueva Habitación</h2>
+            <form id="addRoomForm">
+                <div class="form-group">
+                    <label>Número de Habitación</label>
+                    <input type="text" id="rRoomNumber" placeholder="101" required>
+                </div>
+                <div class="form-group">
+                    <label>Tipo</label>
+                    <select id="rType" required>
+                        <option value="single">Individual</option>
+                        <option value="double">Doble</option>
+                        <option value="suite">Suite</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Precio por Noche ($)</label>
+                    <input type="number" id="rPrice" placeholder="100" step="0.01" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Guardar Habitación</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Room Modal -->
+    <div id="editRoomModal" class="modal-overlay">
+        <div class="modal">
+            <button class="close-btn" onclick="closeModal('editRoomModal')">&times;</button>
+            <h2>Editar Habitación</h2>
+            <form id="editRoomForm">
+                <input type="hidden" id="editRoomId">
+                <div class="form-group">
+                    <label>Número de Habitación</label>
+                    <input type="text" id="eRoomNumber" placeholder="101" required>
+                </div>
+                <div class="form-group">
+                    <label>Tipo</label>
+                    <select id="eType" required>
+                        <option value="single">Individual</option>
+                        <option value="double">Doble</option>
+                        <option value="suite">Suite</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Precio por Noche ($)</label>
+                    <input type="number" id="ePrice" placeholder="100" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>Estado</label>
+                    <select id="eStatus" required>
+                        <option value="available">Disponible</option>
+                        <option value="occupied">Ocupada</option>
+                        <option value="maintenance">Mantenimiento</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Actualizar Habitación</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/rooms.js"></script>
+</body>
+
+</html>

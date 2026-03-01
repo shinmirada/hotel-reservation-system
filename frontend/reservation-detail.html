@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Reserva - Hotel Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="brand">
+            <span class="icon">🏨</span>
+            <h1>Hotel Manager</h1>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="guests.html">Huéspedes</a>
+            <a href="rooms.html">Habitaciones</a>
+            <a href="reservations.html">Reservas</a>
+            <a href="new-reservation.html">Nueva Reserva</a>
+            <a href="reports.html">Reportes</a>
+            <button id="logoutBtn">Cerrar Sesión</button>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h2>🔍 Detalle de Reserva #<span id="reservationId">...</span></h2>
+                <p>Información completa de la reserva</p>
+            </div>
+            <div class="btn-group" id="actionButtons"></div>
+        </div>
+
+        <div class="detail-grid">
+            <div class="detail-section">
+                <h3>👤 Información del Huésped</h3>
+                <div class="detail-row">
+                    <span class="label">Nombre</span>
+                    <span class="value" id="guestName">...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Email</span>
+                    <span class="value" id="guestEmail">...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Teléfono</span>
+                    <span class="value" id="guestPhone">...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Documento</span>
+                    <span class="value" id="guestDoc">...</span>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3>🚪 Información de la Habitación</h3>
+                <div class="detail-row">
+                    <span class="label">Número</span>
+                    <span class="value" id="roomNumber">...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Tipo</span>
+                    <span class="value" id="roomType">...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Precio / Noche</span>
+                    <span class="value" id="roomPrice">...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Estado Habitación</span>
+                    <span class="value" id="roomStatus">...</span>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3>📅 Fechas</h3>
+                <div class="detail-row">
+                    <span class="label">Check-In</span>
+                    <span class="value" id="checkIn">...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Check-Out</span>
+                    <span class="value" id="checkOut">...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Noches</span>
+                    <span class="value" id="nights">...</span>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3>💰 Facturación</h3>
+                <div class="detail-row">
+                    <span class="label">Total</span>
+                    <span class="value" id="totalPrice" style="font-size: 1.25rem; color: var(--accent);">...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Estado</span>
+                    <span class="value" id="reservationStatus">...</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Creada</span>
+                    <span class="value" id="createdAt">...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/reservation-detail.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huéspedes - Hotel Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="brand">
+            <span class="icon">🏨</span>
+            <h1>Hotel Manager</h1>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="guests.html" class="active">Huéspedes</a>
+            <a href="rooms.html">Habitaciones</a>
+            <a href="reservations.html">Reservas</a>
+            <a href="new-reservation.html">Nueva Reserva</a>
+            <a href="reports.html">Reportes</a>
+            <button id="logoutBtn">Cerrar Sesión</button>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h2>👥 Huéspedes</h2>
+                <p>Gestión de huéspedes del hotel</p>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('addGuestModal')">+ Nuevo Huésped</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Documento</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="guestList">
+                    <tr>
+                        <td colspan="6" class="loading">Cargando...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add Guest Modal -->
+    <div id="addGuestModal" class="modal-overlay">
+        <div class="modal">
+            <button class="close-btn" onclick="closeModal('addGuestModal')">&times;</button>
+            <h2>Nuevo Huésped</h2>
+            <form id="addGuestForm">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" id="gFirstName" placeholder="Nombre" required>
+                </div>
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input type="text" id="gLastName" placeholder="Apellido" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="gEmail" placeholder="email@ejemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="text" id="gPhone" placeholder="300 123 4567">
+                </div>
+                <div class="form-group">
+                    <label>Documento de Identidad</label>
+                    <input type="text" id="gDocumentId" placeholder="CC123456" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Guardar Huésped</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Guest Modal -->
+    <div id="editGuestModal" class="modal-overlay">
+        <div class="modal">
+            <button class="close-btn" onclick="closeModal('editGuestModal')">&times;</button>
+            <h2>Editar Huésped</h2>
+            <form id="editGuestForm">
+                <input type="hidden" id="editGuestId">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" id="eFirstName" placeholder="Nombre" required>
+                </div>
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input type="text" id="eLastName" placeholder="Apellido" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="eEmail" placeholder="email@ejemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="text" id="ePhone" placeholder="300 123 4567">
+                </div>
+                <div class="form-group">
+                    <label>Documento de Identidad</label>
+                    <input type="text" id="eDocumentId" placeholder="CC123456" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Actualizar Huésped</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/guests.js"></script>
+</body>
+
+</html>

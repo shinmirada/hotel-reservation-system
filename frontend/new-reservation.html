@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Reserva - Hotel Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="brand">
+            <span class="icon">🏨</span>
+            <h1>Hotel Manager</h1>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="guests.html">Huéspedes</a>
+            <a href="rooms.html">Habitaciones</a>
+            <a href="reservations.html">Reservas</a>
+            <a href="new-reservation.html" class="active">Nueva Reserva</a>
+            <a href="reports.html">Reportes</a>
+            <button id="logoutBtn">Cerrar Sesión</button>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h2>📝 Nueva Reserva</h2>
+                <p>Crear una nueva reserva de habitación</p>
+            </div>
+        </div>
+
+        <div class="detail-grid">
+            <div class="detail-section">
+                <h3>📋 Datos de la Reserva</h3>
+                <form id="newReservationForm">
+                    <div class="form-group">
+                        <label>Huésped</label>
+                        <select id="nGuestId" required>
+                            <option value="">Seleccione un huésped...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Habitación (Solo disponibles)</label>
+                        <select id="nRoomId" required>
+                            <option value="">Seleccione una habitación...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de Check-In</label>
+                        <input type="date" id="nCheckIn" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de Check-Out</label>
+                        <input type="date" id="nCheckOut" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Crear Reserva</button>
+                </form>
+            </div>
+
+            <div class="detail-section">
+                <h3>💰 Resumen de Costos</h3>
+                <div id="costSummary">
+                    <div class="detail-row">
+                        <span class="label">Habitación</span>
+                        <span class="value" id="summaryRoom">—</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Tipo</span>
+                        <span class="value" id="summaryType">—</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Precio / noche</span>
+                        <span class="value" id="summaryPrice">—</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Noches</span>
+                        <span class="value" id="summaryNights">—</span>
+                    </div>
+                    <div class="detail-row"
+                        style="border-top: 1px solid var(--border); margin-top: 1rem; padding-top: 1rem;">
+                        <span class="label" style="font-weight: 600; font-size: 1rem;">Total Estimado</span>
+                        <span class="value" id="summaryTotal"
+                            style="font-size: 1.25rem; color: var(--accent);">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/new-reservation.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas - Hotel Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="brand">
+            <span class="icon">🏨</span>
+            <h1>Hotel Manager</h1>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="guests.html">Huéspedes</a>
+            <a href="rooms.html">Habitaciones</a>
+            <a href="reservations.html" class="active">Reservas</a>
+            <a href="new-reservation.html">Nueva Reserva</a>
+            <a href="reports.html">Reportes</a>
+            <button id="logoutBtn">Cerrar Sesión</button>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h2>📋 Reservas</h2>
+                <p>Lista de todas las reservas</p>
+            </div>
+            <a href="new-reservation.html" class="btn btn-primary">+ Nueva Reserva</a>
+        </div>
+
+        <div class="filter-bar">
+            <select id="filterStatus">
+                <option value="">Todos los estados</option>
+                <option value="confirmed">Confirmada</option>
+                <option value="checked_in">Check-In</option>
+                <option value="checked_out">Check-Out</option>
+                <option value="cancelled">Cancelada</option>
+            </select>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Huésped</th>
+                        <th>Habitación</th>
+                        <th>Tipo</th>
+                        <th>Check-In</th>
+                        <th>Check-Out</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="reservationList">
+                    <tr>
+                        <td colspan="9" class="loading">Cargando...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="js/reservations.js"></script>
+</body>
+
+</html>
