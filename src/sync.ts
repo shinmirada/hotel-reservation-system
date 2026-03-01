@@ -15,32 +15,37 @@ const syncDatabase = async () => {
         await sequelize.sync({ alter: true });
         console.log('✅ Database synced!');
 
-        // Seed admin user
-        await User.create({
-            username: 'admin',
-            password: 'password123',
-            role: 'admin'
+        // Seed admin user (findOrCreate to avoid duplicates on restart)
+        const [adminUser, adminCreated] = await User.findOrCreate({
+            where: { username: 'admin' },
+            defaults: { password: 'password123', role: 'admin' }
         });
-        console.log('👤 Admin user created');
+        console.log(adminCreated ? '👤 Admin user created' : '👤 Admin user already exists');
 
         // Seed sample rooms
-        const rooms = await Promise.all([
-            Room.create({ roomNumber: '101', type: 'single', pricePerNight: 80, status: 'available' }),
-            Room.create({ roomNumber: '102', type: 'single', pricePerNight: 80, status: 'available' }),
-            Room.create({ roomNumber: '201', type: 'double', pricePerNight: 120, status: 'available' }),
-            Room.create({ roomNumber: '202', type: 'double', pricePerNight: 120, status: 'available' }),
-            Room.create({ roomNumber: '301', type: 'suite', pricePerNight: 250, status: 'available' }),
-            Room.create({ roomNumber: '302', type: 'suite', pricePerNight: 300, status: 'maintenance' }),
-        ]);
-        console.log(`🏨 ${rooms.length} sample rooms created`);
+        const roomData = [
+            { roomNumber: '101', type: 'single', pricePerNight: 80, status: 'available' },
+            { roomNumber: '102', type: 'single', pricePerNight: 80, status: 'available' },
+            { roomNumber: '201', type: 'double', pricePerNight: 120, status: 'available' },
+            { roomNumber: '202', type: 'double', pricePerNight: 120, status: 'available' },
+            { roomNumber: '301', type: 'suite', pricePerNight: 250, status: 'available' },
+            { roomNumber: '302', type: 'suite', pricePerNight: 300, status: 'maintenance' },
+        ];
+        const rooms = await Promise.all(
+            roomData.map(r => Room.findOrCreate({ where: { roomNumber: r.roomNumber }, defaults: r }))
+        );
+        console.log(`🏨 Rooms ready (${rooms.filter(([, created]) => created).length} new)`);
 
         // Seed sample guests
-        const guests = await Promise.all([
-            Guest.create({ firstName: 'Juan', lastName: 'García', email: 'juan@email.com', phone: '3001234567', documentId: 'CC1001' }),
-            Guest.create({ firstName: 'María', lastName: 'López', email: 'maria@email.com', phone: '3009876543', documentId: 'CC1002' }),
-            Guest.create({ firstName: 'Carlos', lastName: 'Martínez', email: 'carlos@email.com', phone: '3005551234', documentId: 'CC1003' }),
-        ]);
-        console.log(`👥 ${guests.length} sample guests created`);
+        const guestData = [
+            { firstName: 'Juan', lastName: 'García', email: 'juan@email.com', phone: '3001234567', documentId: 'CC1001' },
+            { firstName: 'María', lastName: 'López', email: 'maria@email.com', phone: '3009876543', documentId: 'CC1002' },
+            { firstName: 'Carlos', lastName: 'Martínez', email: 'carlos@email.com', phone: '3005551234', documentId: 'CC1003' },
+        ];
+        const guests = await Promise.all(
+            guestData.map(g => Guest.findOrCreate({ where: { documentId: g.documentId }, defaults: g }))
+        );
+        console.log(`👥 Guests ready (${guests.filter(([, created]) => created).length} new)`);
 
     } catch (error) {
         console.error('Unable to connect to the database:', error);
